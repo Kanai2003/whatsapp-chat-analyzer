@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-st.sidebar.title("Whatsapp Chat Analyzer by K.M")
+st.sidebar.title("Whatsapp Chat Analyzer")
 
 uploaded_file = st.sidebar.file_uploader("Choose a file")
 
@@ -156,7 +156,7 @@ if uploaded_file is not None:
         st.markdown('''You forgot to hit the "Show analysis" button ✌️ or Data Processing...😀''')
 
 else:
-    st.title("Welcome to Whatsapp Message Analyzer by K.Manna")
+    st.title("Welcome to Whatsapp Message Analyzer")
     st.subheader("Steps : ")
     st.markdown("1. Goto sidebar & Upload .txt file (whatsapp chat exported file)")
     st.markdown('''2. Choose user and hit the "show analysis" button''')

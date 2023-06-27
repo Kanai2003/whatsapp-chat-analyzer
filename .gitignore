@@ -1,4 +1,5 @@
-__pycace__
-.idea
-data
+__pycace__/
+.idea/
+data/
 .ipynb
+venv/
