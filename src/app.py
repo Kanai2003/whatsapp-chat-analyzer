@@ -5,6 +5,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
+# configuring the page
+st.set_page_config(
+    page_title="Chat-Mine",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
+
+
 st.sidebar.title("Whatsapp Chat Analyzer")
 
 uploaded_file = st.sidebar.file_uploader("Choose a file")
