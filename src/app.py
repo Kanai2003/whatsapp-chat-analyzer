@@ -13,8 +13,8 @@ st.set_page_config(
 )
 
 # ============================
-with open('styles.css') as f:
-    st.header(f'<style>{f.read()}</style>', unsafe_allow_html=True);
+# with open('styles.css') as f:
+#     st.header(f'<style>{f.read()}</style>', unsafe_allow_html=True);
 
 
 st.sidebar.title("Whatsapp Chat Analyzer")
