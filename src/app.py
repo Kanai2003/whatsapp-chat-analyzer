@@ -12,6 +12,9 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+# ============================
+with open('styles.css') as f:
+    st.header(f'<style>{f.read()}</style>', unsafe_allow_html=True);
 
 
 st.sidebar.title("Whatsapp Chat Analyzer")
@@ -34,38 +37,46 @@ if uploaded_file is not None:
     user_list.sort()
     user_list.insert(0, "Overall")
 
-    # sidebar element to chose user name
+    # sidebar element, chose user name
     selected_user = st.sidebar.selectbox("Choose User", user_list)
 
-
-
+    # After clicking "Show Analysis" button
     if st.sidebar.button("Show Analysis"):
-
         df, num_massages, num_words, num_del_messages, num_medias, num_url = helper.fetch_start(selected_user, df)
 
-        st.title("Statistics")
+        st.subheader("Statistics")
         col1, col2, col3, col4, col5 = st.columns(5)
-        with col1 :
-            st.header("Total Messages")
-            st.title(num_massages)
+        with col1:
+            # st.header("Total Messages")
+            # st.title(num_massages)
+            st.metric("Total Messages", num_massages)
+            # ==================================
+            # st.metric(
+            #     f'<div class = "metic"><p>"Total Messages"</p>{num_massages}</div>',
+            #     unsafe_allow_html = True
+            # )
 
-        with col2 :
-            st.header("Total Words")
-            st.title(num_words)
+        with col2:
+            # st.header("Total Words")
+            # st.title(num_words)
+            st.metric("Total Words", num_words)
 
-        with col3 :
-            st.header("Deleted Messages")
-            st.title(num_del_messages)
+        with col3:
+            # st.header("Deleted Messages")
+            # st.title(num_del_messages)
+            st.metric("Deleted Messages", num_del_messages)
 
-        with col4 :
-            st.header("Media Shared")
-            st.title(num_medias)
+        with col4:
+            # st.header("Media Shared")
+            # st.title(num_medias)
+            st.metric("Media Shared", num_medias)
 
-        with col5 :
-            st.header("URL Shared")
-            st.title(num_url)
+        with col5:
+            # st.header("URL Shared")
+            # st.title(num_url)
+            st.metric("URL Shared", num_url)
 
-        st.title("Timelines")
+        st.subheader("Timelines")
         col1, col2 = st.columns(2)
         with col1:
             # monthly timeline
@@ -75,6 +86,7 @@ if uploaded_file is not None:
             ax.plot(timeline['time'], timeline['messages'])
             plt.xticks(rotation="vertical")
             st.pyplot(fig)
+
 
         with col2:
             # daily timeline
@@ -169,6 +181,7 @@ else:
     st.subheader("Steps : ")
     st.markdown("1. Goto sidebar & Upload .txt file (whatsapp chat exported file)")
     st.markdown('''2. Choose user and hit the "show analysis" button''')
+
 
 
 
