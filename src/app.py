@@ -39,7 +39,7 @@ if uploaded_file is not None:
     if st.sidebar.button("Show Analysis"):
         df, num_massages, num_words, num_del_messages, num_medias, num_url = helper.fetch_start(selected_user, df)
 
-        st.subheader("Statistics")
+        st.header("Statistics")
         col1, col2, col3, col4, col5 = st.columns(5)
         with col1:
             # st.header("Total Messages")
@@ -66,11 +66,11 @@ if uploaded_file is not None:
             # st.title(num_url)
             st.metric("URL Shared", num_url)
 
-        st.subheader("Timelines")
+        st.header("Timelines")
         col1, col2 = st.columns(2)
         with col1:
             # monthly timeline
-            st.header("Monthly Timeline")
+            st.subheader("Monthly Timeline")
             timeline = helper.monthly_timeline(selected_user, df)
             fig, ax = plt.subplots()
             ax.plot(timeline['time'], timeline['messages'])
@@ -80,7 +80,7 @@ if uploaded_file is not None:
 
         with col2:
             # daily timeline
-            st.header("Daily Timeline")
+            st.subheader("Daily Timeline")
             daily_timeline = helper.daily_timeline(selected_user, df)
             fig, ax = plt.subplots()
             ax.plot(daily_timeline['only_date'], daily_timeline['messages'])
@@ -90,17 +90,17 @@ if uploaded_file is not None:
 
 
         # week activity map
-        st.title("Activity Map")
+        st.header("Activity Map")
         col1, col2 = st.columns(2)
         with col1:
-            st.header("Most Busy Days")
+            st.subheader("Most Busy Days")
             busy_day = helper.week_activity(selected_user, df)
             fig, ax = plt.subplots()
             ax.bar(busy_day.index, busy_day.values)
             plt.xticks(rotation="vertical")
             st.pyplot(fig)
         with col2:
-            st.header("Most Busy Months")
+            st.subheader("Most Busy Months")
             busy_month = helper.month_activity(selected_user, df)
             fig, ax = plt.subplots()
             ax.bar(busy_month.index, busy_month.values)
@@ -108,7 +108,7 @@ if uploaded_file is not None:
             st.pyplot(fig)
 
         # activity heatmap
-        st.title("Weekly Activity Heatmap")
+        st.header("Weekly Activity Heatmap")
         user_heatmap = helper.activity_heatmap(selected_user, df)
         fig, ax = plt.subplots()
         ax = sns.heatmap(user_heatmap)
@@ -116,7 +116,7 @@ if uploaded_file is not None:
 
         # showing Busy users in a group, valid only for group/overall
         if selected_user == 'Overall' :
-            st.title("Most Busy Users")
+            st.header("Most Busy Users")
             x, new_df = helper.most_busy_users(df)
             fig, ax = plt.subplots()
             col1, col2 = st.columns(2)
@@ -129,18 +129,18 @@ if uploaded_file is not None:
                 st.dataframe(new_df)
 
         # word analysis
-        st.title("Word Analysis")
+        st.header("Word Analysis")
         col1, col2 = st.columns(2)
         with col1:
             # wordcloud
-            st.header("Wordcloud")
+            st.subheader("Wordcloud")
             wc_df = helper.generate_wordcloud(selected_user, df)
             fig, ax = plt.subplots()
             ax.imshow(wc_df)
             st.pyplot(fig)
         with col2:
             # most common words
-            st.header("Most Common Words")
+            st.subheader("Most Common Words")
             most_common_word_df = helper.most_common_words(selected_user, df)
             fig, ax = plt.subplots()
             ax.barh(most_common_word_df[0], most_common_word_df[1])
