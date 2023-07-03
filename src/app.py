@@ -12,11 +12,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ============================
-# with open('styles.css') as f:
-#     st.header(f'<style>{f.read()}</style>', unsafe_allow_html=True);
-
-
 st.sidebar.title("Whatsapp Chat Analyzer")
 
 uploaded_file = st.sidebar.file_uploader("Choose a file")
@@ -50,11 +45,6 @@ if uploaded_file is not None:
             # st.header("Total Messages")
             # st.title(num_massages)
             st.metric("Total Messages", num_massages)
-            # ==================================
-            # st.metric(
-            #     f'<div class = "metic"><p>"Total Messages"</p>{num_massages}</div>',
-            #     unsafe_allow_html = True
-            # )
 
         with col2:
             # st.header("Total Words")
