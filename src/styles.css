@@ -1,6 +1,28 @@
-.sidebar-title{
-    color:blue;
+.title{
+    color:lime;
     text-align: center;
-    font-size: large;
-    font-family: Roboto, sans-serif;
+    font-size: 2.5rem;
+    transform:
+        perspective(750px)
+        translate3d(0px, 0px, -250px)
+        rotateX(27deg)
+        scale(0.9, 0.9);
+      border-radius: 20px;
+      border: 2.5px solid grey;
+
+    /*  transition: 0.4s ease-in-out transform;*/
+  /*&:hover {*/
+  /*  transform: translate3d(0px, 0px, -250px);*/
+  /*}*/
+
+
+  box-shadow: 0px 20px 100px #555;
+  transition:0.5s ease all;
+
+  &:hover {
+    transform:
+      rotate(0deg)
+      scale(1)
+      translateY(10px);
+  }
 }

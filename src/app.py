@@ -21,7 +21,7 @@ with open(styles_file_path, 'r') as f:
 
 # App elements starts from here
 
-st.sidebar.write('<div class="sidebar-title">Whatsapp Chat Analyzer</div>', unsafe_allow_html=True)
+st.sidebar.write('<div class="title">Chat-Mine</div>', unsafe_allow_html=True)
 
 uploaded_file = st.sidebar.file_uploader("Choose a file")
 
@@ -197,7 +197,7 @@ if uploaded_file is not None:
 
 
 else:
-    st.title("Welcome to Whatsapp Message Analyzer")
+    st.write('<div class="title">Welcome to Chat-Mine!</div>', unsafe_allow_html=True)
     st.subheader("Steps : ")
     st.markdown("1. Goto sidebar & Upload .txt file (whatsapp chat exported file)")
     st.markdown('''2. Choose user and hit the "show analysis" button''')
